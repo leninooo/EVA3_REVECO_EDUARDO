@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GESTIÓN DE CLIENTES</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">GESTIÓN DE CLIENTES</h1>
+        
+        <div id="mensajes"></div>
+        
+        <form id="formularioEstudiante">
+            <div class="mb-3">
+                <label for="campo1" class="form-label">NÚMERO DE BOLETA (ID)</label>
+                <input type="text" class="form-control" id="campo1" maxlength="5" placeholder="NÚMERO DE BOLETA">
+            </div>
+            <div class="mb-3">
+                <label for="campo2" class="form-label">RUT DEL CLIENTE (SIN PUNTOS Y CON GUIÓN)</label>
+                <input type="text" class="form-control" id="campo2" maxlength="30" placeholder="RUT CLIENTE">
+            </div>
+            <div class="mb-3">
+                <label for="campo3" class="form-label">NOMBRE DEL CLIENTE</label>
+                <input type="text" class="form-control" id="campo3" maxlength="30" placeholder="NOMBRE">
+            </div>
+            <div class="mb-3">
+                <label for="campo4" class="form-label">APELLIDOS DEL CLIENTE</label>
+                <input type="text" class="form-control" id="campo4" maxlength="30" placeholder="APELLIDOS">
+            </div>
+            <div class="mb-3">
+                <label for="campo5" class="form-label">DIRECCIÓN DE ENVÍO</label>
+                <input type="text" class="form-control" id="campo5" maxlength="30" placeholder="DIRECCIÓN">
+            </div>
+            <div class="mb-3">
+                <label for="campo6" class="form-label">TIPO DE ENVÍO</label>
+                <select class="form-select" id="campo6">
+                    <option value="A REGIÓN">A REGIÓN</option>
+                    <option value="SUCURSAL">SUCURSAL</option>
+                    <option value="PRESENCIAL">PRESENCIAL</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="campo7" class="form-label">ESTADO DE ENVÍO</label><br>
+                <input type="radio" id="campo7_1" name="campo7" value="PENDIENTE"> PENDIENTE
+                <input type="radio" id="campo7_2" name="campo7" value="ENTREGADO"> ENTREGADO
+            </div>
+            <div class="mb-3">
+                <label for="campo8" class="form-label">MONTO TOTAL PAGADO (O POR PAGAR)</label>
+                <input type="number" class="form-control" id="campo8" min="0" placeholder="MONTO">
+            </div>
+            <div class="mb-3">
+                <label for="campo9" class="form-label">NÚMERO TELEFÓNICO DEL CLIENTE</label>
+                <input type="number" class="form-control" id="campo9" min="0" placeholder="NÚMERO TELEFÓNICO">
+            </div>
+            <div class="mb-3">
+                <label for="campo10" class="form-label">TIPO DE PAGO</label>
+                <select class="form-select" id="campo10">
+                    <option value="TRANSFERENCIA">TRANSFERENCIA</option>
+                    <option value="EFECTIVO">EFECTIVO</option>
+                    <option value="CRÉDITO O DEBITO">CRÉDITO O DEBITO</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="campo11" class="form-label">STOCK</label><br>
+                <input type="radio" id="campo11_1" name="campo11" value="EN STOCK"> EN STOCK
+                <input type="radio" id="campo11_2" name="campo11" value="SIN STOCK"> SIN STOCK
+            </div>
+            <div class="mb-3">
+                <label for="campo12" class="form-label">PRODUCTO SELECCIONADO</label>
+                <select class="form-select" id="campo12">
+                    <option value="Apple iPhone 11 128 GB Negro">Apple iPhone 11 128 GB Negro</option>
+                    <option value="Apple iPhone 14 de 256 GB Medianoche">Apple iPhone 14 de 256 GB Medianoche</option>
+                    <option value="Apple iPhone 13 128GB Rosado">Apple iPhone 13 128GB Rosado</option>
+                    <option value="Airpods 2da generación">Airpods 2da generación</option>
+                    <option value="AirPods 3ra generación">AirPods 3ra generación</option>
+                    <option value="AirPods Pro 2da generación">AirPods Pro 2da generación</option>
+                    <option value="AirPods Max">AirPods Max</option>
+                    <option value="Apple TV 4K 128GB">Apple TV 4K 128GB</option>
+                    <option value="Apple Ipad 10a generación 256GB">Apple Ipad 10a generación 256GB</option>
+
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="registrar()">REGISTRAR</button>
+            <button type="button" class="btn btn-info" onclick="consultar()">CONSULTAR</button>
+            <button type="button" class="btn btn-warning" onclick="modificar()">MODIFICAR</button>
+            <button type="button" class="btn btn-danger" onclick="eliminar()">ELIMINAR</button>
+            <button type="button" class="btn btn-secondary" onclick="limpiarCampos(1)">LIMPIAR</button>
+        </form>
+        
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>NÚMERO DE BOLETA</th>
+                    <th>RUT DEL CLIENTE</th>
+                    <th>NOMBRE DEL CLIENTE</th>
+                    <th>APELLIDOS DEL CLIENTE</th>
+                    <th>DIRECCIÓN DE ENVÍO</th>
+                    <th>TIPO DE ENVÍO</th>
+                    <th>ESTADO DE ENVÍO</th>
+                    <th>MONTO TOTAL</th>
+                    <th>NÚMERO TELEFÓNICO</th>
+                    <th>TIPO DE PAGO</th>
+                    <th>STOCK</th>
+                    <th>PRODUCTO SELECCIONADO</th>
+                </tr>
+            </thead>
+            <tbody id="tabladedatos"></tbody>
+        </table>
+    </div>
+    <footer class="bg-dark text-white text-center p-3 mt-4">
+        SITIO DESARROLLADO POR: EDUARDO REVECO
+    </footer>
+    <script src="js/funciones.js"></script>
+</body>
+</html>
